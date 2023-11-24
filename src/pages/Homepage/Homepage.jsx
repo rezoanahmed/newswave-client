@@ -1,6 +1,8 @@
 import Headlines from "../../shared/Headlines/Headlines";
 import Hero from "../../shared/Hero/Hero";
 import AllArticles from "../AllArticles/AllArticles";
+import Features from "../Features/Features";
+import Subscriptions from "../Subscriptions/Subscriptions";
 
 
 const Homepage = () => {
@@ -9,6 +11,8 @@ const Homepage = () => {
             <Hero></Hero>
             <Headlines></Headlines>
             <AllArticles></AllArticles>
+            <Subscriptions></Subscriptions>
+            <Features></Features>
         </div>
     );
 };
