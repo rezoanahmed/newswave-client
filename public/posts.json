@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "title": "Breaking News: Important Event",
+        "post": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "image": "https://example.com/image1.jpg",
+        "status": "published",
+        "category": "Politics",
+        "price": 0.99,
+        "author_name": "John Doe",
+        "author_img": "https://example.com/author1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Tech Innovations: Future Technology",
+        "post": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "image": "https://example.com/image2.jpg",
+        "status": "draft",
+        "category": "Technology",
+        "price": 1.99,
+        "author_name": "Jane Smith",
+        "author_img": "https://example.com/author2.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Sports Update: Championship Results",
+        "post": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "image": "https://example.com/image3.jpg",
+        "status": "published",
+        "category": "Sports",
+        "price": 0.79,
+        "author_name": "Michael Johnson",
+        "author_img": "https://example.com/author3.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Entertainment Buzz: Movie Premiere",
+        "post": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "image": "https://example.com/image4.jpg",
+        "status": "published",
+        "category": "Entertainment",
+        "price": 1.49,
+        "author_name": "Emily Davis",
+        "author_img": "https://example.com/author4.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Health and Wellness: Latest Research",
+        "post": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+        "image": "https://example.com/image5.jpg",
+        "status": "draft",
+        "category": "Health",
+        "price": 0.89,
+        "author_name": "David Wilson",
+        "author_img": "https://example.com/author5.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Business Insights: Market Trends",
+        "post": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+        "image": "https://example.com/image6.jpg",
+        "status": "published",
+        "category": "Business",
+        "price": 1.29,
+        "author_name": "Alex Miller",
+        "author_img": "https://example.com/author6.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Science Discoveries: Space Exploration",
+        "post": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+        "image": "https://example.com/image7.jpg",
+        "status": "published",
+        "category": "Science",
+        "price": 0.69,
+        "author_name": "Sophia Carter",
+        "author_img": "https://example.com/author7.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Travel Adventures: Hidden Gems",
+        "post": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+        "image": "https://example.com/image8.jpg",
+        "status": "draft",
+        "category": "Travel",
+        "price": 0.99,
+        "author_name": "Oliver Turner",
+        "author_img": "https://example.com/author8.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Cultural Highlights: Art Exhibition",
+        "post": "Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+        "image": "https://example.com/image9.jpg",
+        "status": "published",
+        "category": "Culture",
+        "price": 1.19,
+        "author_name": "Isabella Moore",
+        "author_img": "https://example.com/author9.jpg"
+    },
+    {
+        "id": 10,
+        "title": "Environment Watch: Conservation Efforts",
+        "post": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.",
+        "image": "https://example.com/image10.jpg",
+        "status": "published",
+        "category": "Environment",
+        "price": 0.79,
+        "author_name": "Daniel Parker",
+        "author_img": "https://example.com/author10.jpg"
+    },
+    {
+        "id": 11,
+        "title": "Education Focus: Innovations in Learning",
+        "post": "Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.",
+        "image": "https://example.com/image11.jpg",
+        "status": "draft",
+        "category": "Education",
+        "price": 1.09,
+        "author_name": "Gabriel Harris",
+        "author_img": "https://example.com/author11.jpg"
+    },
+    {
+        "id": 12,
+        "title": "Food Delights: Culinary Adventures",
+        "post": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+        "image": "https://example.com/image12.jpg",
+        "status": "published",
+        "category": "Food",
+        "price": 0.89,
+        "author_name": "Sophie Turner",
+        "author_img": "https://example.com/author12.jpg"
+    }
+]
