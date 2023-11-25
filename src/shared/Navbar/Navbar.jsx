@@ -1,7 +1,14 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+
+import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { FiLogOut } from "react-icons/fi"
 
 const Navbar = () => {
+    const { user, logout } = useAuth();
+    const handleLogout = () => {
+        logout()
+
+    }
 
     const links = <>
     <li><NavLink to='/'>Home</NavLink></li>
@@ -39,7 +46,24 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <NavLink to='/login' className="btn btn-sm bg-gunblack text-white">Login</NavLink>
+                    {
+                        user?
+                        <div className="flex justify-center items-center gap-2">
+                                            <div className="flex-shrink-0 group block">
+                                                <div className="flex items-center">
+                                                    <img className="inline-block flex-shrink-0 h-[3rem] w-[3rem] rounded-full" src={user.photoURL} />
+                                                    <div className="ml-3">
+                                                        <h3 className="font-semibold text-gunblack">{user.displayName}</h3>
+                                                        <p className="text-xs text-gunblack">{user.email}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <FiLogOut  onClick={handleLogout} className="text-2xl" title="Log Out"></FiLogOut>
+
+                                        </div>
+                        :
+                        <NavLink to='/login' className="btn btn-sm bg-gunblack text-white">Login</NavLink>
+                    }
                 </div>
             </div>
         </div>

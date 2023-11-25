@@ -12,7 +12,14 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password });
+        // console.log({ email, password });
+        login(email, password)
+        .then(userCredentials=>{
+            console.log(userCredentials);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
     const handleGoogleLogin = () =>{
         googleLogin()
@@ -29,8 +36,8 @@ const Login = () => {
             <div className="p-4 md:p-16">
                 <div></div>
                 <form onSubmit={handleSubmit} className="flex flex-col justify-center max-w-md mx-auto gap-2">
-                    <TextField name="email" id="outlined-basic" label="Email" variant="outlined" required />
-                    <TextField name="password" id="outlined-basic" label="Password" variant="outlined" required />
+                    <TextField name="email" type='email' id="outlined-basic" label="Email" variant="outlined" required />
+                    <TextField name="password" type="password" id="outlined-basic" label="Password" variant="outlined" required />
                     <button type="submit" className="bg-gunblack text-white p-2 rounded-md">Login</button>
                 </form>
                 <div className="flex flex-col justify-center max-w-md mx-auto items-center gap-2">
