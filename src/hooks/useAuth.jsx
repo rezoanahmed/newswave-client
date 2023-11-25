@@ -19,7 +19,7 @@ const useAuth = () => {
     }
 
     // register user
-    const register = async (email, password, name, photo) => {
+    const registerUser = async (email, password, name, photo) => {
         setLoading(true)
         const result = await createUserWithEmailAndPassword(auth, email, password);
         await updateUser(name, photo)
@@ -77,7 +77,7 @@ const useAuth = () => {
 
     const loginSystems = {
         googleLogin,
-        register,
+        registerUser,
         login,
         logout,
         user,
