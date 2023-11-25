@@ -1,3 +1,4 @@
+import Footer from "../../shared/Footer/Footer";
 import Headlines from "../../shared/Headlines/Headlines";
 import Hero from "../../shared/Hero/Hero";
 import AllArticles from "../AllArticles/AllArticles";
@@ -13,6 +14,7 @@ const Homepage = () => {
             <AllArticles></AllArticles>
             <Subscriptions></Subscriptions>
             <Features></Features>
+            <Footer></Footer>
         </div>
     );
 };

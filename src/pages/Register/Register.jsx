@@ -12,7 +12,9 @@ const Register = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password });
+        const name = form.name.value;
+        const image = form.image.value;
+        console.log({ email, password,name,image });
     }
 
     const handleGoogleLogin = () => {
@@ -33,7 +35,7 @@ const Register = () => {
                     <TextField name="name" id="outlined-basic" label="Name" variant="outlined" required />
                     <TextField name="email" id="outlined-basic" label="Email" variant="outlined" required />
                     <TextField name="password" id="outlined-basic" label="Password" variant="outlined" required />
-                    <input type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
+                    <input name="image" type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
                     <button type="submit" className="bg-gunblack text-white p-2 rounded-md">Register</button>
                 </form>
                 <div className="flex flex-col justify-center max-w-md mx-auto items-center gap-2">

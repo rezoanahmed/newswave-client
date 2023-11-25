@@ -28,7 +28,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <NavLink>
-                        <img src="https://i.ibb.co/BswPp3Q/Untitled-design.png" alt="Logo" className='h-16' />
+                        <img src="https://i.ibb.co/BswPp3Q/Untitled-design.png" alt="Logo" className='h-16 hidden md:block' />
                     </NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -38,7 +38,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div className="">
+                <div className="navbar-end">
                     <NavLink to='/login' className="btn btn-sm bg-gunblack text-white">Login</NavLink>
                 </div>
             </div>
