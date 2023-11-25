@@ -7,6 +7,7 @@ import Subscriptions from "../pages/Subscriptions/Subscriptions";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Add from "../pages/Add/Add";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: "/add",
-                element: <Add></Add>
+                element: <PrivateRoute><Add></Add></PrivateRoute>
             },
         ]
     }
