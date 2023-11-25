@@ -37,7 +37,7 @@ const useAuth = () => {
     // logout user
     const logout = async () => {
         const result = await signOut(auth);
-        Swal.fire("", "Logout Succeeded!!!", "success");
+        // Swal.fire("", "Logout Succeeded!!!", "success");
         return result;
     }
 
@@ -57,7 +57,7 @@ const useAuth = () => {
             setUser(currentUser);
             setLoading(false);
             const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail };
+            // const loggedUser = { email: userEmail };
             // if (currentUser) {
             //     axios.post("https://travego-server.vercel.app/jwt", loggedUser, { withCredentials: true })
             //         .then(res => {

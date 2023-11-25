@@ -3,6 +3,7 @@ import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 
 
@@ -18,8 +19,9 @@ const Register = () => {
     //     console.log({ email, password,name,image });
     // }
 
-    const {register, onSubmit, handleSubmit } = useForm();
+    const {register, handleSubmit } = useForm();
     // user registration
+    const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
     const handleUserRegistration = async(data)=>{
         const email = data.email;
         const name = data.name;
@@ -28,6 +30,24 @@ const Register = () => {
         const imageFile = {image}
         console.log({email, name, password, image});
         console.log(imageFile);
+        axios.post(imageAPI, imageFile)
+
+        const res = await axios.post(imageAPI, imageFile,{
+            headers:{
+                
+                "content-type":"multipart/form-data"
+            } 
+        })
+        // console.log(res);
+        const photoURL = res.data.data.display_url;
+        registerUser(email, password, name, photoURL )
+        .then(userCredentials=>{
+            console.log(userCredentials);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
 
     }
 
