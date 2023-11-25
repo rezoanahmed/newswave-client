@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import Swal from "sweetalert2";
 // import axios from "axios";
 import { auth } from "../firebase/firebase.config";
 
