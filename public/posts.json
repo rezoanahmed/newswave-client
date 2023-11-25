@@ -3,7 +3,7 @@
         "id": 1,
         "title": "Breaking News: Important Event",
         "post": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "image": "https://example.com/image1.jpg",
+        "image": "https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "status": "published",
         "category": "Politics",
         "price": 0.99,

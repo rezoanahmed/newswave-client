@@ -1,16 +1,28 @@
 import { TextField } from "@mui/material";
 import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 
 
 const Register = () => {
+    const {register, googleLogin} = useAuth();
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log({ email, password });
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(userCredentials => {
+                console.log(userCredentials);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     return (
 
@@ -27,11 +39,11 @@ const Register = () => {
                 <div className="flex flex-col justify-center max-w-md mx-auto items-center gap-2">
                     <div className="divider" >Other Login Options</div>
                     <div className="flex gap-2">
-                        <button className="btn text-lg rounded-full"><FaGoogle></FaGoogle></button>
+                        <button onClick={handleGoogleLogin} className="btn text-lg rounded-full"><FaGoogle></FaGoogle></button>
                         <button className="btn text-lg rounded-full"><FaFacebook></FaFacebook></button>
                         <button className="btn text-lg rounded-full"><FaTwitter></FaTwitter></button>
                     </div>
-                        <p>Already Registered? <Link to='/login' className="font-bold text-gunblack">Login Now!</Link></p>
+                    <p>Already Registered? <Link to='/login' className="font-bold text-gunblack">Login Now!</Link></p>
                 </div>
 
 
