@@ -1,15 +1,26 @@
 import { MenuItem, TextField } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 const Add = () => {
 
-    const handleAddArticle = e =>{
-        e.preventDefault();
-        const form = e.target;
-        const title = form.title.value;
-        const category = form.category.value;
-        const article = form.article.value;
-        const image = form.image.value;
-        const imageFile = {image}
+    // traditional form system
+    // const handleAddArticle = e => {
+    //     e.preventDefault();
+    //     const form = e.target;
+    //     const title = form.title.value;
+    //     const category = form.category.value;
+    //     const article = form.article.value;
+    //     const image = form.image.value;
+    //     const imageFile = { image }
+    //     console.log({ title, category, article, imageFile });
+    // }
+    const { register, handleSubmit } = useForm();
+    const addArticle = async (data) => {
+        const title = data.title;
+        const category = data.category;
+        const article = data.article;
+        const image = data.image[0];
+        const imageFile = { image }
         console.log({title, category, article, imageFile});
     }
 
@@ -70,17 +81,18 @@ const Add = () => {
     return (
         <div className="p-2">
             <h1 className="text-center text-4xl font-bold p-5">Add Articles</h1>
-            <form onSubmit={handleAddArticle} className="max-w-lg mx-auto space-y-2">
+            <form onSubmit={handleSubmit(addArticle)} className="max-w-lg mx-auto space-y-2">
                 <div className="flex justify-between">
-                    <TextField name="title" id="outlined-basic" label="Article Title" variant="outlined" />
+                    <TextField name="title" id="outlined-basic" label="Article Title" variant="outlined" {...register("title")} />
                     {/* <TextField id="outlined-basic" label="Category" variant="outlined" /> */}
                     <TextField
-                    name="category"
+                        name="category"
                         id="outlined-select-currency"
                         select
                         label=""
                         defaultValue="technology"
                         helperText="Please select your post category"
+                        {...register("category")}
                     >
                         {categories.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
@@ -92,17 +104,18 @@ const Add = () => {
                 </div>
                 <div>
                     <TextField
-                    name="article"
+                        name="article"
                         id="outlined-multiline-static"
                         label="Full Article"
                         multiline
                         rows={5}
                         className="w-full"
+                        {...register("article")}
                     // defaultValue="Default Value"
                     />
                 </div>
                 <div>
-                    <input name='image' type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
+                    <input name='image' {...register("image")} type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
                 </div>
                 <input className="btn w-full bg-gunblack text-white hover:bg-white hover:text-gunblack" type="submit" value="Add Article" />
 
