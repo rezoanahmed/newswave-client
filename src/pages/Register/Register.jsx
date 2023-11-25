@@ -1,14 +1,18 @@
 import { TextField } from "@mui/material";
 import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 
 const Register = () => {
-    const {registerUser, googleLogin} = useAuth();
+    
+    const navigate = useNavigate();
+    
+    const { registerUser, googleLogin } = useAuth();
     // const handleSubmit = e => {
     //     e.preventDefault();
     //     const form = e.target;
@@ -19,34 +23,39 @@ const Register = () => {
     //     console.log({ email, password,name,image });
     // }
 
-    const {register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     // user registration
     const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
-    const handleUserRegistration = async(data)=>{
+    const handleUserRegistration = async (data) => {
         const email = data.email;
         const name = data.name;
         const password = data.password;
         const image = data.image[0];
-        const imageFile = {image}
-        console.log({email, name, password, image});
+        const imageFile = { image }
+        console.log({ email, name, password, image });
         console.log(imageFile);
         axios.post(imageAPI, imageFile)
 
-        const res = await axios.post(imageAPI, imageFile,{
-            headers:{
-                
-                "content-type":"multipart/form-data"
-            } 
+        const res = await axios.post(imageAPI, imageFile, {
+            headers: {
+
+                "content-type": "multipart/form-data"
+            }
         })
         // console.log(res);
         const photoURL = res.data.data.display_url;
-        registerUser(email, password, name, photoURL )
-        .then(userCredentials=>{
-            console.log(userCredentials);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+        registerUser(email, password, name, photoURL)
+            .then(userCredentials => {
+                // console.log(userCredentials);
+                if(userCredentials){
+                    Swal.fire("Congratulations!", "Registration Succeeded!!!", "success");
+                    navigate("/login");
+                }
+                
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
 
     }
@@ -54,13 +63,17 @@ const Register = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(userCredentials => {
-                console.log(userCredentials);
+                // console.log(userCredentials);
+                if(userCredentials){
+                    Swal.fire("", "Login Succeeded!!!", "success")
+                    navigate("/");
+                }
             })
             .catch(err => {
                 console.log(err);
             })
     }
-    
+
     return (
 
         <>
@@ -69,8 +82,16 @@ const Register = () => {
                 <form onSubmit={handleSubmit(handleUserRegistration)} className="flex flex-col justify-center max-w-md mx-auto gap-2">
                     <TextField {...register("name")} name="name" id="outlined-basic" label="Name" variant="outlined" required />
                     <TextField {...register("email")} name="email" type="email" id="outlined-basic" label="Email" variant="outlined" required />
-                    <TextField {...register("password")} name="password" id="outlined-basic" label="Password" variant="outlined" type="password" required />
-                    <input {...register("image")} name="image" type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
+                    <TextField {...register("password", {
+                        required: true,
+                        minLength: 6,
+                        maxLength: 20,
+                        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])/
+                    })} name="password" id="outlined-basic" label="Password" variant="outlined" type="password" required />
+                    {errors.password?.type === "minLength" && <p className="text-red-600">Password must be six characters</p>}
+                    {errors.password?.type === "maxLength" && <p className="text-red-600">Password can't exceed 20 characters</p>}
+                    {errors.password?.type === "pattern" && <p className="text-red-600">Password must contain an uppercase, a lowercase and a special character</p>}
+                    <input {...register("image")} name="image" type="file" className="file-input file-input-bordered file-input-gunblack w-full" required />
                     <button type="submit" className="bg-gunblack text-white p-2 rounded-md">Register</button>
                 </form>
                 <div className="flex flex-col justify-center max-w-md mx-auto items-center gap-2">

@@ -1,11 +1,14 @@
 import { TextField } from "@mui/material";
 import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const {login, googleLogin} = useAuth();
     const handleSubmit = e => {
         e.preventDefault();
@@ -15,19 +18,41 @@ const Login = () => {
         // console.log({ email, password });
         login(email, password)
         .then(userCredentials=>{
-            console.log(userCredentials);
+            // 
+            if(userCredentials){
+                form.reset();
+                navigate(location?.state?location.state:'/')
+                Swal.fire("Welcome", "Login Succeeded!!!", "success");
+            }
         })
         .catch(err=>{
-            console.log(err);
+            // console.log(err);
+            if(err){
+                // Swal.fire("", "Something went wrong!!!", "error");
+                if (err.code == "auth/invalid-login-credentials") {
+                    Swal.fire("", "Email and Password Didn't Match", 'error')
+                } else{
+                    // console.log(err.code)
+                    Swal.fire("","Something went wrong", 'error');
+                }
+            }
         })
     }
     const handleGoogleLogin = () =>{
         googleLogin()
         .then(userCredentials=>{
-            console.log(userCredentials);
+            // console.log(userCredentials);
+            if(userCredentials){
+                navigate(location?.state?location.state:'/')
+                Swal.fire("Welcome", "Login Succeeded!!!", "success");
+            }
         })
         .catch(err=>{
-            console.log(err);
+            // console.log(err);
+            if(err){
+                Swal.fire("", "Something went wrong!!!", "error")
+
+            }
         })
     }
     return (
