@@ -1,4 +1,5 @@
 import { MenuItem, TextField } from "@mui/material";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 
 const Add = () => {
@@ -19,9 +20,10 @@ const Add = () => {
         const title = data.title;
         const category = data.category;
         const article = data.article;
+        const type = data.type;
         const image = data.image[0];
-        const imageFile = { image }
-        console.log({title, category, article, imageFile});
+        const imageFile = { image };
+        console.log({title, category, article, imageFile, type});
     }
 
     const categories = [
@@ -78,8 +80,21 @@ const Add = () => {
             label: 'Others',
         },
     ];
+    const type = [
+        {
+            value: "free",
+            label: "Free",
+        },
+        {
+            value: "premium",
+            label: "Premium"
+        }
+    ]
     return (
         <div className="p-2">
+            <Helmet>
+                <title>News Wave | Add Articles</title>
+            </Helmet>
             <h1 className="text-center text-4xl font-bold p-5">Add Articles</h1>
             <form onSubmit={handleSubmit(addArticle)} className="max-w-lg mx-auto space-y-2">
                 <div className="flex justify-between">
@@ -91,10 +106,25 @@ const Add = () => {
                         select
                         label=""
                         defaultValue="technology"
-                        helperText="Please select your post category"
+                        helperText=""
                         {...register("category")}
                     >
                         {categories.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                        name="type"
+                        id="outlined-select-currency"
+                        select
+                        label=""
+                        defaultValue="free"
+                        helperText=""
+                        {...register("type")}
+                    >
+                        {type.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>

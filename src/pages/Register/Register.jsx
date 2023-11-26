@@ -1,10 +1,11 @@
 import { TextField } from "@mui/material";
 import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -77,6 +78,9 @@ const Register = () => {
     return (
 
         <>
+        <Helmet>
+            <title>News Wave | User Registration</title>
+        </Helmet>
             <div className="p-4 md:p-16">
                 <div></div>
                 <form onSubmit={handleSubmit(handleUserRegistration)} className="flex flex-col justify-center max-w-md mx-auto gap-2">
