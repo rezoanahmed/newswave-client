@@ -3,6 +3,7 @@ import useAxiosPublic from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import { Delete, Update } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const ManageArticles = () => {
@@ -16,11 +17,35 @@ const ManageArticles = () => {
             }, []);
     })
 
-    const handleDelete = () =>{
-        console.log("delete");
+    const handleUpdate = () => {
+        console.log("Update");
     }
-    const handleUpdate = () =>{
-        console.log("update");
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // console.log("Delete Operation Triggered", id);
+                axiosPublic.delete(`/posts/${id}`)
+                    .then(data => {
+                        if (data.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+
+                        }
+                    })
+
+            }
+        });
     }
     return (
         <div>
@@ -41,17 +66,17 @@ const ManageArticles = () => {
                                     <th>Title</th>
                                     <th>Category</th>
                                     <th>Actions</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
                                 {/* rows  */}
                                 {
-                                    myArticle.map((element,index) => <>
+                                    myArticle.map((element, index) => <>
                                         <tr>
                                             <th>
                                                 <label>
-                                                   <p className="font-bold">{index+1}</p>
+                                                    <p className="font-bold">{index + 1}</p>
                                                 </label>
                                             </th>
                                             <td>
@@ -71,11 +96,11 @@ const ManageArticles = () => {
                                                 {element.category}
                                             </td>
                                             <th className="flex gap-2">
-                                                <Link to='/dashboard/update' className="btn rounded-full btn-success" onClick={()=>handleUpdate()}>
-                                                <Update></Update>
+                                                <Link to='/dashboard/update' className="btn rounded-full btn-success" onClick={() => handleUpdate()}>
+                                                    <Update></Update>
                                                 </Link>
-                                                <button className="btn rounded-full btn-error" onClick={()=>handleDelete()}>
-                                                <Delete></Delete>
+                                                <button className="btn rounded-full btn-error" onClick={() => handleDelete(element._id)}>
+                                                    <Delete></Delete>
                                                 </button>
                                             </th>
                                         </tr>
