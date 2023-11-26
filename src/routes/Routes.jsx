@@ -12,6 +12,7 @@ import Dashboard from "../dashboard/dashboard/Dashboard";
 import ArticleDetails from "../pages/AllArticles/ArticleDetails";
 import MyArticles from "../pages/MyArticles/MyArticles";
 import ManageArticles from "../dashboard/ManageArticles/ManageArticles";
+import Update from "../dashboard/Update/Update";
 
 export const routes = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/dashboard/manage",
                 element: <ManageArticles></ManageArticles>,
+            },
+            {
+                path: "/dashboard/update",
+                element: <Update></Update>
             }
         ]
     }

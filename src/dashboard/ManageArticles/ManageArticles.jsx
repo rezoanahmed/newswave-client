@@ -24,7 +24,7 @@ const ManageArticles = () => {
     }
     return (
         <div>
-            <div className="m-10 flex justify-between">
+            <div className="flex justify-between">
                 <h1 className="text-4xl font-bold">Total Articles: {myArticle.length}</h1>
                 <h1 className="text-4xl font-bold">Author: {user.displayName}</h1>
             </div>
@@ -71,7 +71,7 @@ const ManageArticles = () => {
                                                 {element.category}
                                             </td>
                                             <th className="flex gap-2">
-                                                <Link to='/update' className="btn rounded-full btn-success" onClick={()=>handleUpdate()}>
+                                                <Link to='/dashboard/update' className="btn rounded-full btn-success" onClick={()=>handleUpdate()}>
                                                 <Update></Update>
                                                 </Link>
                                                 <button className="btn rounded-full btn-error" onClick={()=>handleDelete()}>

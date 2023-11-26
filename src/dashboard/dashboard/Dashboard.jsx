@@ -26,7 +26,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="flex-1 bg-base-100">
+            <div className="flex-1 bg-base-100 m-10">
                 <Outlet></Outlet>
 
             </div>
