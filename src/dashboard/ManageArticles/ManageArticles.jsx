@@ -1,0 +1,97 @@
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxios";
+import useAuth from "../../hooks/useAuth";
+import { Delete, Update } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+
+
+const ManageArticles = () => {
+    const { user } = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const [myArticle, setMyArticle] = useState([]);
+    useEffect(() => {
+        axiosPublic.get(`/myarticles?email=${user?.email}`)
+            .then(data => {
+                setMyArticle(data.data);
+            }, []);
+    })
+
+    const handleDelete = () =>{
+        console.log("delete");
+    }
+    const handleUpdate = () =>{
+        console.log("update");
+    }
+    return (
+        <div>
+            <div className="m-10 flex justify-between">
+                <h1 className="text-4xl font-bold">Total Articles: {myArticle.length}</h1>
+                <h1 className="text-4xl font-bold">Author: {user.displayName}</h1>
+            </div>
+            <div>
+                <div className="p-10">
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Index
+                                    </th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* rows  */}
+                                {
+                                    myArticle.map((element,index) => <>
+                                        <tr>
+                                            <th>
+                                                <label>
+                                                   <p className="font-bold">{index+1}</p>
+                                                </label>
+                                            </th>
+                                            <td>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-16 h-16">
+                                                            <img src={element.photoURL} alt="Avatar Tailwind CSS Component" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-bold text-lg">{element.title}</div>
+                                                        <div className="text-sm opacity-50 capitalize">{element.type}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td className="capitalize">
+                                                {element.category}
+                                            </td>
+                                            <th className="flex gap-2">
+                                                <Link to='/update' className="btn rounded-full btn-success" onClick={()=>handleUpdate()}>
+                                                <Update></Update>
+                                                </Link>
+                                                <button className="btn rounded-full btn-error" onClick={()=>handleDelete()}>
+                                                <Delete></Delete>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                    </>)
+                                }
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ManageArticles;

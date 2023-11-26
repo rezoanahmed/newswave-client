@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import {  Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 
@@ -29,12 +29,12 @@ const ArticleCard = ({ articles }) => {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {article?.slice(0,40)}...
+          {article?.slice(0,100)}...
+        <NavLink to={`/article/${_id}`} className='text-blue font-bold'>Read More</NavLink>
         </Typography>
       </CardContent>
       <CardActions>
         {/* <Button size="small">Share</Button> */}
-        <NavLink to={`/article/${_id}`} className='text-blue font-bold'>Read More</NavLink>
       </CardActions>
     </Card>
         </>

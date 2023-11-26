@@ -10,6 +10,8 @@ import Add from "../pages/Add/Add";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../dashboard/dashboard/Dashboard";
 import ArticleDetails from "../pages/AllArticles/ArticleDetails";
+import MyArticles from "../pages/MyArticles/MyArticles";
+import ManageArticles from "../dashboard/ManageArticles/ManageArticles";
 
 export const routes = createBrowserRouter([
     {
@@ -46,10 +48,25 @@ export const routes = createBrowserRouter([
                 path: "/add",
                 element: <PrivateRoute><Add></Add></PrivateRoute>
             },
+            {
+                path: "/myarticles",
+                element: <MyArticles></MyArticles>,
+
+            }
         ]
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>
+        element: <Dashboard></Dashboard>,
+        children:[
+            {
+                path: "/dashboard",
+                element: <div className="text-center font-black">dashboard</div>
+            },
+            {
+                path: "/dashboard/manage",
+                element: <ManageArticles></ManageArticles>,
+            }
+        ]
     }
 ])

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
     return (
@@ -21,12 +21,13 @@ const Dashboard = () => {
                 <div className="p-8 flex flex-col gap-2">
                     <NavLink>Author Home</NavLink>
                     <NavLink>Premium Articles</NavLink>
-                    <NavLink>Manage Articles</NavLink>
+                    <NavLink to='/dashboard/manage'>Manage Articles</NavLink>
                     <NavLink>Articles Status</NavLink>
                 </div>
             </div>
 
             <div className="flex-1 bg-base-100">
+                <Outlet></Outlet>
 
             </div>
         </div>

@@ -19,6 +19,7 @@ const ArticleDetails = () => {
                                 </div>
                                 <div className="flex flex-col items-center text-center justify-center">
                                     <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">{author_name}</h2>
+                                    <h1>Author</h1>
                                     <div className="w-12 h-1 bg-gunblack rounded mt-2 mb-1"></div>
                                     <p className="text-base">{author_email}</p>
                                 </div>
