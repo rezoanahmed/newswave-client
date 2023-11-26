@@ -14,10 +14,10 @@ const Navbar = () => {
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/all'>All Articles</NavLink></li>
     <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
-    <li><NavLink to='/add'>Add Articles</NavLink></li>
-    <li><NavLink to='/myarticles'>My Articles</NavLink></li>
-    <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-    <li><NavLink to='/premium'>Premium Articles</NavLink></li>
+    <li><NavLink to='/add' className={user? "" : "hidden"}>Add Articles</NavLink></li>
+    <li><NavLink to='/myarticles' className={user? "" : "hidden"}>My Articles</NavLink></li>
+    <li><NavLink to='/dashboard' className={user? "" : "hidden"}>Dashboard</NavLink></li>
+    <li><NavLink to='/premium' className={user? "" : "hidden"}>Premium Articles</NavLink></li>
     </>
 
     return (

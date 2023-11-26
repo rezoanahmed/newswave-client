@@ -1,9 +1,8 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 
 
-const ArticleCard = ({ article }) => {
-    const { title, post, author_img, author_name, image } = article;
+const ArticleCard = ({ articles }) => {
+    const { title, article, image } = articles;
     return (
         // <div className="p-4 rounded-md bg-base-200 shadow-2xl">
         //     <img src={image} alt="" className="h-64 rounded-md" />
@@ -29,7 +28,7 @@ const ArticleCard = ({ article }) => {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {post.slice(0,40)}...
+          {article?.slice(0,40)}...
         </Typography>
       </CardContent>
       <CardActions>

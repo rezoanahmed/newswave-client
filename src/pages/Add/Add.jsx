@@ -1,6 +1,8 @@
 import { MenuItem, TextField } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 const Add = () => {
 
@@ -15,7 +17,9 @@ const Add = () => {
     //     const imageFile = { image }
     //     console.log({ title, category, article, imageFile });
     // }
+    const {user} = useAuth();
     const { register, handleSubmit } = useForm();
+    const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
     const addArticle = async (data) => {
         const title = data.title;
         const category = data.category;
@@ -23,7 +27,24 @@ const Add = () => {
         const type = data.type;
         const image = data.image[0];
         const imageFile = { image };
-        console.log({title, category, article, imageFile, type});
+        const author_name = user?.displayName;
+        const author_email = user?.email;
+        const author_img = user?.photoURL;
+        const status = "pending";
+        
+        const res = await axios.post(imageAPI, imageFile, {
+            headers: {
+                
+                "content-type": "multipart/form-data"
+            }
+        })
+        // console.log(res);
+        const photoURL = res.data.data.display_url;
+        // console.log(photoURL);
+        const articleDetails = {title, category, article, photoURL, type, author_name, author_email, author_img, status}
+        console.log(articleDetails);
+        
+
     }
 
     const categories = [

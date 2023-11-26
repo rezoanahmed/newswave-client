@@ -14,7 +14,7 @@ const AllArticles = () => {
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-2 md:p-16">
-                {article.map(element=><ArticleCard key={element.id} article={element}></ArticleCard>)}
+                {article.map(element=><ArticleCard key={element.id} articles={element}></ArticleCard>)}
             </div>
         </>
     );
