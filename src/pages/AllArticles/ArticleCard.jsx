@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 
 
 const ArticleCard = ({ articles }) => {
-    const { title, article, image } = articles;
+    const { title, article, image, photoURL } = articles;
     return (
         // <div className="p-4 rounded-md bg-base-200 shadow-2xl">
         //     <img src={image} alt="" className="h-64 rounded-md" />
@@ -20,7 +20,7 @@ const ArticleCard = ({ articles }) => {
         <Card sx={{ }}>
       <CardMedia
         sx={{ height: 400 }}
-        image={image}
+        image={photoURL}
         title="green iguana"
       />
       <CardContent>

@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import useAxiosPublic from "../../hooks/useAxios";
+import Swal from "sweetalert2";
 
 const Add = () => {
 
@@ -19,6 +21,7 @@ const Add = () => {
     // }
     const {user} = useAuth();
     const { register, handleSubmit } = useForm();
+    const axiosPublic = useAxiosPublic();
     const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
     const addArticle = async (data) => {
         const title = data.title;
@@ -43,7 +46,14 @@ const Add = () => {
         // console.log(photoURL);
         const articleDetails = {title, category, article, photoURL, type, author_name, author_email, author_img, status}
         console.log(articleDetails);
-        
+        axiosPublic.post("/posts", articleDetails)
+        .then(data=>{
+            // console.log(data);
+            if(data.data.insertedId){
+                Swal.fire("Great", "Your article has been added to the queue. Please wait for approval.", "success");
+            }
+        })
+
 
     }
 
