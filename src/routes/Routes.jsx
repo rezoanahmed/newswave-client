@@ -9,6 +9,7 @@ import Register from "../pages/Register/Register";
 import Add from "../pages/Add/Add";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../dashboard/dashboard/Dashboard";
+import ArticleDetails from "../pages/AllArticles/ArticleDetails";
 
 export const routes = createBrowserRouter([
     {
@@ -23,6 +24,11 @@ export const routes = createBrowserRouter([
             {
                 path: "/all",
                 element: <AllArticles></AllArticles>
+            },
+            {
+                path: "/article/:id",
+                element: <ArticleDetails></ArticleDetails>,
+                loader: ({params})=>fetch(`http://localhost:3000/post/${params.id}`)
             },
             {
                 path: "/subscriptions",

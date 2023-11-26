@@ -55,7 +55,7 @@ const useAuth = () => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
-            const userEmail = currentUser?.email || user?.email;
+            // const userEmail = currentUser?.email || user?.email;
             // const loggedUser = { email: userEmail };
             // if (currentUser) {
             //     axios.post("https://travego-server.vercel.app/jwt", loggedUser, { withCredentials: true })

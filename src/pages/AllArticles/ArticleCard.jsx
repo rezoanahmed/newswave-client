@@ -1,8 +1,9 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 
 const ArticleCard = ({ articles }) => {
-    const { title, article, image, photoURL } = articles;
+    const { title, article, photoURL, _id } = articles;
     return (
         // <div className="p-4 rounded-md bg-base-200 shadow-2xl">
         //     <img src={image} alt="" className="h-64 rounded-md" />
@@ -33,7 +34,7 @@ const ArticleCard = ({ articles }) => {
       </CardContent>
       <CardActions>
         {/* <Button size="small">Share</Button> */}
-        <Button size="small">Read More</Button>
+        <NavLink to={`/article/${_id}`} className='text-blue font-bold'>Read More</NavLink>
       </CardActions>
     </Card>
         </>
