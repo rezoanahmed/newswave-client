@@ -11,13 +11,13 @@ const Navbar = () => {
     }
 
     const links = <>
-    <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/all'>All Articles</NavLink></li>
-    <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
-    <li><NavLink to='/add' className={user? "" : "hidden"}>Add Articles</NavLink></li>
-    <li><NavLink to='/myarticles' className={user? "" : "hidden"}>My Articles</NavLink></li>
-    <li><NavLink to='/dashboard' className={user? "" : "hidden"}>Dashboard</NavLink></li>
-    <li><NavLink to='/premium' className={user? "" : "hidden"}>Premium Articles</NavLink></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/all'>All Articles</NavLink></li>
+        <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
+        <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
+        <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
+        <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li>
+        <li><NavLink to='/premium' className={user ? "" : "hidden"}>Premium Articles</NavLink></li>
     </>
 
     return (
@@ -47,22 +47,26 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user?
-                        <div className="flex justify-center items-center gap-2">
-                                            <div className="flex-shrink-0 group block">
-                                                <div className="flex items-center">
-                                                    <img className="inline-block flex-shrink-0 h-[3rem] w-[3rem] rounded-full" src={user.photoURL} />
-                                                    <div className="ml-3">
-                                                        <h3 className="font-semibold text-gunblack">{user.displayName}</h3>
-                                                        <p className="text-xs text-gunblack">{user.email}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <FiLogOut  onClick={handleLogout} className="text-2xl" title="Log Out"></FiLogOut>
-
-                                        </div>
-                        :
-                        <NavLink to='/login' className="btn btn-sm bg-gunblack text-white">Login</NavLink>
+                        user ?
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+                                    </div>
+                                </div>
+                                <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64">
+                                    <li>
+                                        <a className="justify-between">
+                                            {user.displayName}
+                                            <span className="badge">Premium</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li><button onClick={()=>handleLogout()}>Logout</button></li>
+                                </ul>
+                            </div>
+                            :
+                            <NavLink to='/login' className="btn btn-sm bg-gunblack text-white">Login</NavLink>
                     }
                 </div>
             </div>

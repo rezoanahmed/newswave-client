@@ -30,18 +30,13 @@ const Dashboard = () => {
                 </div>
                 <div className="divider"></div>
                 <div className="p-8 flex flex-col gap-2">
-                    <NavLink to='/' className={({ isActive, isPending }) =>
+                    <NavLink to='/dashboard/authorhome' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Author Home</NavLink>
-                    <NavLink to='/' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Premium Articles</NavLink>
                     <NavLink to='/dashboard/manage' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Manage My Articles</NavLink>
-                    <NavLink to='/' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Articles Status</NavLink>
+                   
                 </div>
             </div>
 
