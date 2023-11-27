@@ -4,8 +4,11 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useAxiosPublic from "../../hooks/useAxios";
 import Swal from "sweetalert2";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Update = () => {
+
+    const {_id, title, category, article, type:article_type, photoURL} = useLoaderData();
 
     // traditional form system
     // const handleAddArticle = e => {
@@ -18,11 +21,12 @@ const Update = () => {
     //     const imageFile = { image }
     //     console.log({ title, category, article, imageFile });
     // }
+    const navigate = useNavigate();
     const {user} = useAuth();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
-    const addArticle = async (data) => {
+    const updateArticle = async (data) => {
         const title = data.title;
         const category = data.category;
         const article = data.article;
@@ -44,12 +48,14 @@ const Update = () => {
         const photoURL = res.data.data.display_url;
         // console.log(photoURL);
         const articleDetails = {title, category, article, photoURL, type, author_name, author_email, author_img, status}
-        console.log(articleDetails);
-        axiosPublic.post("/posts", articleDetails)
+        // console.log(articleDetails);
+        axiosPublic.patch(`/posts/${_id}`, articleDetails)
         .then(data=>{
             // console.log(data);
-            if(data.data.insertedId){
-                Swal.fire("Great", "Your article has been added to the queue. Please wait for approval.", "success");
+            if(data.status==200){
+                Swal.fire("Great", "Your article has been added updated.", "success");
+                reset();
+                navigate("/dashboard/manage")
             }
         })
 
@@ -124,16 +130,16 @@ const Update = () => {
         <div className="p-2">
             
             <h1 className="text-4xl font-bold">Update Article</h1>
-            <form onSubmit={handleSubmit(addArticle)} className="max-w-lg mt-10 space-y-2">
+            <form onSubmit={handleSubmit(updateArticle)} className="max-w-lg mt-10 space-y-2">
                 <div className="flex justify-between">
-                    <TextField name="title" id="outlined-basic" label="Article Title" variant="outlined" {...register("title")} />
+                    <TextField defaultValue={title} name="title" id="outlined-basic" label="Article Title" variant="outlined" {...register("title")} />
                     {/* <TextField id="outlined-basic" label="Category" variant="outlined" /> */}
                     <TextField
                         name="category"
                         id="outlined-select-currency"
                         select
                         label=""
-                        defaultValue="technology"
+                        defaultValue={category}
                         helperText=""
                         {...register("category")}
                     >
@@ -148,7 +154,7 @@ const Update = () => {
                         id="outlined-select-currency"
                         select
                         label=""
-                        defaultValue="free"
+                        defaultValue={article_type}
                         helperText=""
                         {...register("type")}
                     >
@@ -162,6 +168,7 @@ const Update = () => {
                 </div>
                 <div>
                     <TextField
+                    defaultValue={article}
                         name="article"
                         id="outlined-multiline-static"
                         label="Full Article"
@@ -173,9 +180,9 @@ const Update = () => {
                     />
                 </div>
                 <div>
-                    <input name='image' {...register("image")} type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
+                    <input name='image' {...register("image")} type="file" className="file-input file-input-bordered file-input-gunblack w-full" required />
                 </div>
-                <input className="btn w-full bg-gunblack text-white hover:bg-white hover:text-gunblack" type="submit" value="Add Article" />
+                <input className="btn w-full bg-gunblack text-white hover:bg-white hover:text-gunblack" type="submit" value="Update" />
 
 
             </form>

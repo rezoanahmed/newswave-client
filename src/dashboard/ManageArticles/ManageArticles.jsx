@@ -96,7 +96,7 @@ const ManageArticles = () => {
                                                 {element.category}
                                             </td>
                                             <th className="flex gap-2">
-                                                <Link to='/dashboard/update' className="btn rounded-full btn-success" onClick={() => handleUpdate()}>
+                                                <Link to={`/dashboard/update/${element._id}`} className="btn rounded-full btn-success" onClick={() => handleUpdate()}>
                                                     <Update></Update>
                                                 </Link>
                                                 <button className="btn rounded-full btn-error" onClick={() => handleDelete(element._id)}>

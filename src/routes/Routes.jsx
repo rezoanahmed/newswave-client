@@ -69,8 +69,9 @@ export const routes = createBrowserRouter([
                 element: <ManageArticles></ManageArticles>,
             },
             {
-                path: "/dashboard/update",
-                element: <Update></Update>
+                path: "/dashboard/update/:id",
+                element: <Update></Update>,
+                loader: ({params})=>fetch(`http://localhost:3000/post/${params.id}`)
             }
         ]
     }
