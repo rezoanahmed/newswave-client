@@ -88,7 +88,7 @@ const ManageArticles = () => {
                                                     </div>
                                                     <div>
                                                         <div className="font-bold text-lg">{element.title}</div>
-                                                        <div className="text-sm opacity-50 capitalize">{element.type}</div>
+                                                        <div className="m-2 text-sm opacity-70 capitalize">{element.type} <span className={`border border-black p-1 rounded-md ${element.status == "approved"? "bg-green-500": "bg-yellow-500"} ${element.status == "rejected"? "bg-red-500": "bg-yellow-500"}`}>{element.status}</span></div>
                                                     </div>
                                                 </div>
                                             </td>
