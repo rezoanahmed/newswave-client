@@ -13,6 +13,7 @@ import ArticleDetails from "../pages/AllArticles/ArticleDetails";
 import MyArticles from "../pages/MyArticles/MyArticles";
 import ManageArticles from "../dashboard/ManageArticles/ManageArticles";
 import Update from "../dashboard/Update/Update";
+import ManageAllArticles from "../dashboard/ManageArticles/ManageAllArticles";
 
 export const routes = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ export const routes = createBrowserRouter([
                 path: "/dashboard/update/:id",
                 element: <Update></Update>,
                 loader: ({params})=>fetch(`http://localhost:3000/post/${params.id}`)
+            },
+            {
+                path: "/dashboard/manageall",
+                element: <ManageAllArticles></ManageAllArticles>
             }
         ]
     }

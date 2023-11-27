@@ -52,7 +52,7 @@ const Update = () => {
         axiosPublic.patch(`/posts/${_id}`, articleDetails)
         .then(data=>{
             // console.log(data);
-            if(data.status==200){
+            if(data.data.modifiedCount){
                 Swal.fire("Great", "Your article has been added updated.", "success");
                 reset();
                 navigate("/dashboard/manage")

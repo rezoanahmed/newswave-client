@@ -12,17 +12,31 @@ const Dashboard = () => {
                     <img src="https://i.ibb.co/BswPp3Q/Untitled-design.png" alt="" className="h-16" />
                 </div>
                 <div className="p-8 flex flex-col gap-2">
-                    <NavLink>Admin Panel Home</NavLink>
-                    <NavLink>Manage Users</NavLink>
-                    <NavLink>Manage Articles</NavLink>
-                    <NavLink>Payments</NavLink>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Admin Panel Home</NavLink>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Manage Users</NavLink>
+                    <NavLink to='/dashboard/manageall' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Manage All Articles</NavLink>
+                    <NavLink to='/'>Author Requests</NavLink>
                 </div>
                 <div className="divider"></div>
                 <div className="p-8 flex flex-col gap-2">
-                    <NavLink>Author Home</NavLink>
-                    <NavLink>Premium Articles</NavLink>
-                    <NavLink to='/dashboard/manage'>Manage Articles</NavLink>
-                    <NavLink>Articles Status</NavLink>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Author Home</NavLink>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Premium Articles</NavLink>
+                    <NavLink to='/dashboard/manage' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Manage My Articles</NavLink>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Articles Status</NavLink>
                 </div>
             </div>
 
