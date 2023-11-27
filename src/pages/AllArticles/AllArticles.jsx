@@ -14,7 +14,7 @@ const AllArticles = () => {
     // },[])
     const axiosPublic = useAxiosPublic();
     useEffect(() => {
-        axiosPublic.get("/posts")
+        axiosPublic.get("/articles?status=approved")
             .then(data => {
                 setArticle(data.data);
             })
