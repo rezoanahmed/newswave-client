@@ -20,7 +20,7 @@ const Add = () => {
     //     console.log({ title, category, article, imageFile });
     // }
     const {user} = useAuth();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
     const addArticle = async (data) => {
@@ -51,6 +51,7 @@ const Add = () => {
             // console.log(data);
             if(data.data.insertedId){
                 Swal.fire("Great", "Your article has been added to the queue. Please wait for approval.", "success");
+                reset();
             }
         })
 
@@ -176,7 +177,7 @@ const Add = () => {
                     />
                 </div>
                 <div>
-                    <input name='image' {...register("image")} type="file" className="file-input file-input-bordered file-input-gunblack w-full" />
+                    <input name='image' {...register("image")} type="file" className="file-input file-input-bordered file-input-gunblack w-full" required/>
                 </div>
                 <input className="btn w-full bg-gunblack text-white hover:bg-white hover:text-gunblack" type="submit" value="Add Article" />
 

@@ -24,7 +24,7 @@ const Register = () => {
     //     console.log({ email, password,name,image });
     // }
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     // user registration
     const imageAPI = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image}`
     const handleUserRegistration = async (data) => {
@@ -50,6 +50,7 @@ const Register = () => {
                 // console.log(userCredentials);
                 if(userCredentials){
                     Swal.fire("Congratulations!", "Registration Succeeded!!!", "success");
+                    reset();
                     navigate("/login");
                 }
                 
