@@ -19,7 +19,7 @@ const Navbar = () => {
             .then(data => {
                 setUserInfo(data.data)
             })
-    }, [axiosPublic, user])
+    }, [axiosPublic,user?.email, userInfo])
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>

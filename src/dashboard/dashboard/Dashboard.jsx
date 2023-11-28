@@ -14,7 +14,7 @@ const Dashboard = () => {
             .then(data => {
                 setUserInfo(data.data)
             })
-    },[axiosPublic,user, userInfo])
+    }, [axiosPublic, user, userInfo])
     return (
         <div className="flex">
             <Helmet>
@@ -24,40 +24,40 @@ const Dashboard = () => {
                 <div>
                     <img src="https://i.ibb.co/BswPp3Q/Untitled-design.png" alt="" className="h-16" />
                 </div>
-                {
-                    userInfo?.role == "admin"?
-                    <div className="p-8 flex flex-col gap-2">
-                    <NavLink to='/' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Admin Panel Home</NavLink>
-                    <NavLink to='/dashboard/manageusers' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Manage Users</NavLink>
-                    <NavLink to='/dashboard/manageall' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Manage All Articles</NavLink>
-                    <NavLink to='/dashboard/postapproval' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Post Approval Requests</NavLink>
-                    <NavLink to='/' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Author Requests</NavLink>
+                <div className="p-8 font-bold">
+                <NavLink to='/' className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "underline font-bold" : ""
+                }>Homepage</NavLink>
                 </div>
-                :
-                <></>
+                {
+                    userInfo?.role == "admin" ?
+                        <div className="p-8 flex flex-col gap-2">
+                            
+                            <NavLink to='/dashboard/manageusers' className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline font-bold" : ""
+                            }>Manage Users</NavLink>
+                            <NavLink to='/dashboard/manageall' className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline font-bold" : ""
+                            }>Manage All Articles</NavLink>
+                            <NavLink to='/dashboard/postapproval' className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline font-bold" : ""
+                            }>Post Approval Requests</NavLink>
+                            <NavLink to='/' className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline font-bold" : ""
+                            }>Author Requests</NavLink>
+                        </div>
+                        :
+                        <></>
                 }
                 <div className="divider"></div>
                 <div className="p-8 flex flex-col gap-2">
-                    <NavLink to='/dashboard/authorhome' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline font-bold" : ""
-                    }>Author Home</NavLink>
                     <NavLink to='/dashboard/manage' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Manage My Articles</NavLink>
                     <NavLink to='/dashboard/add' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Add Articles</NavLink>
-                   
+
                 </div>
             </div>
 
