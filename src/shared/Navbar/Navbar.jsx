@@ -1,14 +1,31 @@
 
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
+import useAxiosPublic from '../../hooks/useAxios';
 
 
 const Navbar = () => {
     const { user, logout } = useAuth();
+    const [userInfo,setUserInfo]=useState();
+    const axiosPublic = useAxiosPublic();
     const handleLogout = () => {
         logout()
 
     }
+    axiosPublic.get("/users")
+    .then(data=>{
+        // console.log(data.data);
+        const usersCollection = data.data;
+        usersCollection.map(element=>{
+            // console.log(element.email);
+            // console.log(element.email == user.email)
+            if(element.email==user.email){
+                setUserInfo(element);
+            }
+            // console.log(userInfo);
+        })
+    })
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -56,9 +73,9 @@ const Navbar = () => {
                                 </div>
                                 <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64">
                                     <li>
-                                        <a className="justify-between">
+                                        <a className="justify-between font-bold">
                                             {user.displayName}
-                                            <span className="badge">Premium</span>
+                                            <span className="badge text-xs font-normal p-4 capitalize bg-gunblack text-white">{userInfo.account_type} User</span>
                                         </a>
                                     </li>
                                     
