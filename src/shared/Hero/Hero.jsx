@@ -26,7 +26,8 @@ const Hero = () => {
         })
     },[])
     return (
-        <div className="p-4">
+        <div className="">
+            <div className="px-8 text-center py-4">
             <TypeAnimation
                 sequence={[
                     // Same substring at the start will only be typed out once, initially
@@ -46,9 +47,10 @@ const Hero = () => {
                 style={{ fontSize: '2em', display: 'inline-block' }}
                 repeat={Infinity}
             />
+            </div>
             
 
-            <div className="">
+            <div className="mt-4">
                 <Swiper
                 
                     spaceBetween={30}

@@ -5,6 +5,7 @@ import Hero from "../../shared/Hero/Hero";
 import AllArticles from "../AllArticles/AllArticles";
 import Features from "../Features/Features";
 import Subscriptions from "../Subscriptions/Subscriptions";
+import AllArticlesHome from "../AllArticles/AllArticlesHome";
 
 
 const Homepage = () => {
@@ -16,7 +17,7 @@ const Homepage = () => {
             
             <Hero></Hero>
             <Headlines></Headlines>
-            <AllArticles></AllArticles>
+            <AllArticlesHome></AllArticlesHome>
             <Subscriptions></Subscriptions>
             <Features></Features>
             <Footer></Footer>
