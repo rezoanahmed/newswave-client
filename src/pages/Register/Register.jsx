@@ -6,10 +6,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../hooks/useAxios";
 
 
 
 const Register = () => {
+
+    const axiosPublic = useAxiosPublic();
     
     const navigate = useNavigate();
     
@@ -49,7 +52,22 @@ const Register = () => {
             .then(userCredentials => {
                 // console.log(userCredentials);
                 if(userCredentials){
-                    Swal.fire("Congratulations!", "Registration Succeeded!!!", "success");
+                    const userInfo = {
+                        name,
+                        email,
+                        role: 'user',
+                        account_type: 'free',
+                    }
+                    // axiosPublic.post()
+                    console.log(userInfo);
+                    axiosPublic.post("/users", userInfo)
+                    Swal.fire({
+                        position: "top",
+                        icon: "success",
+                        title: "User Registered Successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     reset();
                     navigate("/login");
                 }
@@ -67,7 +85,21 @@ const Register = () => {
             .then(userCredentials => {
                 // console.log(userCredentials);
                 if(userCredentials){
-                    Swal.fire("", "Login Succeeded!!!", "success")
+                    const userInfo = {
+                        name: userCredentials.user.displayName,
+                        email: userCredentials.user.email,
+                        role: 'user',
+                        account_type: 'free',
+                    }
+                    // console.log(userInfo);
+                    axiosPublic.post("/users", userInfo)
+                    Swal.fire({
+                        position: "top",
+                        icon: "success",
+                        title: `Welcome, ${userCredentials.user.displayName}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     navigate("/");
                 }
             })

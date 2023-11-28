@@ -1,7 +1,7 @@
 
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import { FiLogOut } from "react-icons/fi"
+
 
 const Navbar = () => {
     const { user, logout } = useAuth();
@@ -51,7 +51,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+                                        <img alt={user.displayName} src={user.photoURL} />
                                     </div>
                                 </div>
                                 <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64">

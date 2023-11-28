@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 // import axios from "axios";
 import { auth } from "../firebase/firebase.config";
+import useAxiosPublic from "./useAxios";
 
 const useAuth = () => {
+    const axiosPublic = useAxiosPublic();
 
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -55,19 +57,9 @@ const useAuth = () => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
-            // const userEmail = currentUser?.email || user?.email;
-            // const loggedUser = { email: userEmail };
-            // if (currentUser) {
-            //     axios.post("https://travego-server.vercel.app/jwt", loggedUser, { withCredentials: true })
-            //         .then(res => {
-            //             console.log(res.data);
-            //         })
-            // } else {
-            //     axios.post("https://travego-server.vercel.app/logout", loggedUser, { withCredentials: true })
-            //         .then(res => {
-            //             console.log(res.data);
-            //         })
-            // }
+            // console.log(currentUser);
+            
+
         })
         return () => {
             unsubscribe();
