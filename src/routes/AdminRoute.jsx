@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuth from "../../src/hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const AdminRoute = ({ children }) => {
@@ -13,10 +13,10 @@ const AdminRoute = ({ children }) => {
             .then(data => {
                 setUserInfo(data.data)
             })
-    },[axiosPublic, user])
+    },[axiosPublic,user, userInfo])
     // console.log(userInfo?.role);
 
-    if (user && userInfo?.role) {
+    if (userInfo?.role == "admin") {
         return children;
     }
     return <Navigate to='/login'></Navigate>;

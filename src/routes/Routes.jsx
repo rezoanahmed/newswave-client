@@ -64,7 +64,7 @@ export const routes = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <AdminRoute><Dashboard></Dashboard></AdminRoute>,
+        element: <Dashboard></Dashboard>,
         children:[
             {
                 path: "/dashboard",
@@ -94,6 +94,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/dashboard/manageusers",
                 element: <ManageAllUsers></ManageAllUsers>
+            },
+            {
+                path: "/dashboard/add",
+                element: <Add></Add>,
             }
             
         ]

@@ -28,7 +28,7 @@ const Navbar = () => {
         <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
         <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
         {
-            userInfo?.role == "admin" ?
+            userInfo?.role == "admin" || userInfo?.role == "author" ?
                 <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li> :
                 <></>
         }

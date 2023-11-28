@@ -1,7 +1,20 @@
 import { Helmet } from "react-helmet-async";
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import useAxiosPublic from "../../hooks/useAxios";
+import { useEffect } from "react";
 
 const Dashboard = () => {
+    const { user } = useAuth();
+    const [userInfo, setUserInfo] = useState();
+    const axiosPublic = useAxiosPublic();
+    useEffect(() => {
+        axiosPublic.get(`http://localhost:3000/user/${user.email}`)
+            .then(data => {
+                setUserInfo(data.data)
+            })
+    },[axiosPublic,user, userInfo])
     return (
         <div className="flex">
             <Helmet>
@@ -11,7 +24,9 @@ const Dashboard = () => {
                 <div>
                     <img src="https://i.ibb.co/BswPp3Q/Untitled-design.png" alt="" className="h-16" />
                 </div>
-                <div className="p-8 flex flex-col gap-2">
+                {
+                    userInfo?.role == "admin"?
+                    <div className="p-8 flex flex-col gap-2">
                     <NavLink to='/' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Admin Panel Home</NavLink>
@@ -28,6 +43,9 @@ const Dashboard = () => {
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Author Requests</NavLink>
                 </div>
+                :
+                <></>
+                }
                 <div className="divider"></div>
                 <div className="p-8 flex flex-col gap-2">
                     <NavLink to='/dashboard/authorhome' className={({ isActive, isPending }) =>
@@ -36,6 +54,9 @@ const Dashboard = () => {
                     <NavLink to='/dashboard/manage' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Manage My Articles</NavLink>
+                    <NavLink to='/dashboard/add' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline font-bold" : ""
+                    }>Add Articles</NavLink>
                    
                 </div>
             </div>
