@@ -3,29 +3,23 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useState } from 'react';
 import useAxiosPublic from '../../hooks/useAxios';
+import { useEffect } from 'react';
 
 
 const Navbar = () => {
     const { user, logout } = useAuth();
-    const [userInfo,setUserInfo]=useState();
-    const axiosPublic = useAxiosPublic();
     const handleLogout = () => {
         logout()
 
     }
-    axiosPublic.get("/users")
-    .then(data=>{
-        // console.log(data.data);
-        const usersCollection = data.data;
-        usersCollection.map(element=>{
-            // console.log(element.email);
-            // console.log(element.email == user.email)
-            if(element.email==user.email){
-                setUserInfo(element);
-            }
-            // console.log(userInfo);
-        })
-    })
+    const [userInfo, setUserInfo] = useState();
+    const axiosPublic = useAxiosPublic();
+    useEffect(() => {
+        axiosPublic.get(`http://localhost:3000/user/${user?.email}`)
+            .then(data => {
+                setUserInfo(data.data)
+            })
+    }, [axiosPublic, user])
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -33,8 +27,17 @@ const Navbar = () => {
         <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
         <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
         <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
-        <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li>
-        <li><NavLink to='/premium' className={user ? "" : "hidden"}>Premium Articles</NavLink></li>
+        {
+            userInfo?.role == "admin" ?
+                <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li> :
+                <></>
+        }
+        {
+            userInfo?.account_type == "premium" || userInfo?.role == "admin" ?
+                <li><NavLink to='/premium' className={user ? "" : "hidden"}>Premium Articles</NavLink></li>
+                :
+                <></>
+        }
     </>
 
     return (
@@ -78,8 +81,8 @@ const Navbar = () => {
                                             <span className="badge text-xs font-normal p-4 capitalize bg-gunblack text-white">{userInfo?.account_type} User</span>
                                         </a>
                                     </li>
-                                    
-                                    <li><button onClick={()=>handleLogout()}>Logout</button></li>
+
+                                    <li><button onClick={() => handleLogout()}>Logout</button></li>
                                 </ul>
                             </div>
                             :

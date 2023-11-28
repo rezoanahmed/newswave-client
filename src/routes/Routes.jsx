@@ -17,6 +17,7 @@ import ManageAllArticles from "../dashboard/ManageArticles/ManageAllArticles";
 import PostApproval from "../pages/PostApproval/PostApproval";
 import AuthorHome from "../dashboard/AuthorHome/AuthorHome";
 import ManageAllUsers from "../dashboard/ManageAllUsers/ManageAllUsers";
+import AdminRoute from "./AdminRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -63,7 +64,7 @@ export const routes = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <AdminRoute><Dashboard></Dashboard></AdminRoute>,
         children:[
             {
                 path: "/dashboard",
