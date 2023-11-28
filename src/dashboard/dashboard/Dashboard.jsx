@@ -15,7 +15,7 @@ const Dashboard = () => {
                     <NavLink to='/' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Admin Panel Home</NavLink>
-                    <NavLink to='/' className={({ isActive, isPending }) =>
+                    <NavLink to='/dashboard/manageusers' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline font-bold" : ""
                     }>Manage Users</NavLink>
                     <NavLink to='/dashboard/manageall' className={({ isActive, isPending }) =>

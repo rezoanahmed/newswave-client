@@ -75,7 +75,7 @@ const Navbar = () => {
                                     <li>
                                         <a className="justify-between font-bold">
                                             {user.displayName}
-                                            <span className="badge text-xs font-normal p-4 capitalize bg-gunblack text-white">{userInfo.account_type} User</span>
+                                            <span className="badge text-xs font-normal p-4 capitalize bg-gunblack text-white">{userInfo?.account_type} User</span>
                                         </a>
                                     </li>
                                     
