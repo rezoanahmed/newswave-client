@@ -18,6 +18,7 @@ import PostApproval from "../pages/PostApproval/PostApproval";
 import ManageAllUsers from "../dashboard/ManageAllUsers/ManageAllUsers";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import AuthorRequest from "../pages/AuthorRequest/AuthorRequest";
+import AuthorApproval from "../dashboard/AuthorApproval/AuthorApproval";
 
 export const routes = createBrowserRouter([
     {
@@ -98,6 +99,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/dashboard/add",
                 element: <Add></Add>,
+            },
+            {
+                path: "/dashboard/authorrequest",
+                element: <AuthorApproval></AuthorApproval>
             }
             
         ]

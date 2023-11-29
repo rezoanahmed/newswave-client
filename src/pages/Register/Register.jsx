@@ -114,7 +114,7 @@ const Register = () => {
         <Helmet>
             <title>News Wave | User Registration</title>
         </Helmet>
-            <div className="p-4 md:p-16">
+            <div className="p-4 md:p-16 mt-24">
                 <div></div>
                 <form onSubmit={handleSubmit(handleUserRegistration)} className="flex flex-col justify-center max-w-md mx-auto gap-2">
                     <TextField {...register("name")} name="name" id="outlined-basic" label="Name" variant="outlined" required />

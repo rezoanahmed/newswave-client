@@ -20,7 +20,7 @@ const AuthorRequest = () => {
         .then(data=>{
             if(data.data.modifiedCount){
                 Swal.fire({
-                    position: "top-end",
+                    position: "top",
                     icon: "success",
                     title: "Your request has been sent. Wait for admin approval",
                     showConfirmButton: false,

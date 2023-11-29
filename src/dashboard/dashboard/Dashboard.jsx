@@ -57,7 +57,7 @@ const Dashboard = () => {
                             <NavLink to='/dashboard/postapproval' className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "underline font-bold" : ""
                             }>Post Approval Requests</NavLink>
-                            <NavLink to='/' className={({ isActive, isPending }) =>
+                            <NavLink to='/dashboard/authorrequest' className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "underline font-bold" : ""
                             }>Author Requests</NavLink>
                         </div>

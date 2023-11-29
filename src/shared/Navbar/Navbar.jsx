@@ -26,7 +26,7 @@ const Navbar = () => {
         <li><NavLink to='/all'>All Articles</NavLink></li>
         <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
         {
-            userInfo?.role == "author"
+            userInfo?.role == "author" || userInfo?.role == "admin" 
             ?
             <>
             <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
@@ -50,7 +50,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className='bg-white'>
+        <div className='bg-white mb-24'>
             <div className="navbar bg-base-100 fixed z-10 top-0 ">
                 <div className="navbar-start">
                     <div className="dropdown">

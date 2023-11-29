@@ -84,7 +84,7 @@ const Login = () => {
             <Helmet>
                 <title>News Wave | Login</title>
             </Helmet>
-            <div className="p-4 md:p-16">
+            <div className="p-4 md:p-16 mt-24">
                 <div></div>
                 <form onSubmit={handleSubmit} className="flex flex-col justify-center max-w-md mx-auto gap-2">
                     <TextField name="email" type='email' id="outlined-basic" label="Email" variant="outlined" required />
