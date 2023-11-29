@@ -25,8 +25,17 @@ const Navbar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/all'>All Articles</NavLink></li>
         <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
-        <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
-        <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
+        {
+            userInfo?.role == "author"
+            ?
+            <>
+            <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
+            <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
+            </>
+            :
+            <li><NavLink to='/authorrequest' className={user ? "" : "hidden"}>Become An Author</NavLink></li>
+
+        }
         {
             userInfo?.role == "admin" || userInfo?.role == "author" ?
                 <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li> :
@@ -41,8 +50,8 @@ const Navbar = () => {
     </>
 
     return (
-        <div className=''>
-            <div className="navbar bg-base-100">
+        <div className='bg-white'>
+            <div className="navbar bg-base-100 fixed z-10 top-0 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

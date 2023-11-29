@@ -17,6 +17,7 @@ import ManageAllArticles from "../dashboard/ManageArticles/ManageAllArticles";
 import PostApproval from "../pages/PostApproval/PostApproval";
 import ManageAllUsers from "../dashboard/ManageAllUsers/ManageAllUsers";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
+import AuthorRequest from "../pages/AuthorRequest/AuthorRequest";
 
 export const routes = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const routes = createBrowserRouter([
                 element: <MyArticles></MyArticles>,
 
             },
+            {
+                path: "/authorrequest",
+                element:<AuthorRequest></AuthorRequest>
+            }
             
         ]
     },

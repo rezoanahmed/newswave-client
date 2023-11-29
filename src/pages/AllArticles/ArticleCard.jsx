@@ -25,10 +25,10 @@ const ArticleCard = ({ articles }) => {
         title="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography sx={{fontFamily:"Quattrocento"}} gutterBottom variant="h5" component="div">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography sx={{fontFamily:"Quattrocento Sans"}} variant="body2" color="text.secondary">
           {article?.slice(0,100)}...
         <NavLink to={`/article/${_id}`} className='text-blue font-bold'>Read More</NavLink>
         </Typography>

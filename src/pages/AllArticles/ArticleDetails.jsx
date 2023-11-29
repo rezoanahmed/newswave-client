@@ -10,7 +10,6 @@ const ArticleDetails = () => {
                     <div className="lg:w-4/6 mx-auto">
                         <div className="rounded-lg h-64 overflow-hidden">
                             <img className="object-cover object-center h-full w-full" src={photoURL} />
-                                
                         </div>
                         <div className="flex flex-col sm:flex-row mt-10">
                             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
@@ -25,8 +24,13 @@ const ArticleDetails = () => {
                                 </div>
                             </div>
                             <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                                <p className="leading-relaxed text-lg mb-4">{article}</p>
-                                
+                                <h1 className="font-bold text-4xl font-quatsans">{title}</h1>
+                                <div className="flex gap-2">
+                                    <p className="capitalize badge badge-success">{type} Article</p>
+                                    <p className="capitalize badge badge-success">{category}</p>
+                                </div>
+                                <p className="leading-relaxed text-lg mb-4 font-quat">{article}</p>
+
                             </div>
                         </div>
                     </div>
