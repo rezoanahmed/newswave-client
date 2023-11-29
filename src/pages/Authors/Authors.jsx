@@ -13,7 +13,7 @@ const Authors = () => {
     }, [])
 
     const result = users?.filter(element => element?.role == "admin" || element?.role == "author");
-    console.log(result);
+    // console.log(result);
     return (
         <div>
             <section className="text-gray-600 body-font">
