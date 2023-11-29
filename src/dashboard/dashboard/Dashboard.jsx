@@ -4,6 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxios";
 import { useEffect } from "react";
+// import { useQuery } from "@tanstack/react-query";
+// import LoadingAnimation from "../../components/LoadingAnimation";
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -15,6 +17,19 @@ const Dashboard = () => {
                 setUserInfo(data.data)
             })
     }, [axiosPublic, user, userInfo])
+
+    // const {data:userInfo, isLoading} = useQuery({
+    //     queryKey: "userInfo",
+    //     queryFn: async()=>{
+    //         const result = await axiosPublic.get(`http://localhost:3000/user/${user.email}`);
+    //         return result?.data;
+    //     }
+    // })
+
+    // if(isLoading){
+    //     return <LoadingAnimation></LoadingAnimation>
+    // }
+
     return (
         <div className="flex">
             <Helmet>
@@ -30,7 +45,7 @@ const Dashboard = () => {
                 }>Homepage</NavLink>
                 </div>
                 {
-                    userInfo?.role == "admin" ?
+                    userInfo?.role === "admin" ?
                         <div className="p-8 flex flex-col gap-2">
                             
                             <NavLink to='/dashboard/manageusers' className={({ isActive, isPending }) =>
