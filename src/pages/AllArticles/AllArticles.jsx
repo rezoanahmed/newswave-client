@@ -24,7 +24,7 @@ const AllArticles = () => {
     //         })
     // }, [])
 
-    const {data:approvedArticle, isLoading, isError} = useQuery({
+    const {data:approvedArticle, isLoading} = useQuery({
         queryKey:"approvedArticle",
         queryFn: async()=>{
             const result = await axiosPublic.get("/articles?status=approved")
