@@ -9,7 +9,7 @@ const DashboardHome = () => {
     const [userInfo, setUserInfo] = useState();
     const axiosPublic = useAxiosPublic();
     useEffect(() => {
-        axiosPublic.get(`http://localhost:3000/user/${user.email}`)
+        axiosPublic.get(`/user/${user.email}`)
             .then(data => {
                 setUserInfo(data.data)
             })

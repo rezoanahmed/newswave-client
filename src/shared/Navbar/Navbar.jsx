@@ -15,7 +15,7 @@ const Navbar = () => {
     const [userInfo, setUserInfo] = useState();
     const axiosPublic = useAxiosPublic();
     useEffect(() => {
-        axiosPublic.get(`http://localhost:3000/user/${user?.email}`)
+        axiosPublic.get(`/user/${user?.email}`)
             .then(data => {
                 setUserInfo(data.data)
             })
@@ -51,7 +51,7 @@ const Navbar = () => {
 
     return (
         <div className='bg-white mb-24'>
-            <div className="navbar bg-base-100 fixed z-10 top-0 shadow-xl ">
+            <div className="navbar bg-base-100 fixed z-10 top-0 shadow-xl">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

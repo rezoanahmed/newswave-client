@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [userInfo, setUserInfo] = useState();
     const axiosPublic = useAxiosPublic();
     useEffect(() => {
-        axiosPublic.get(`http://localhost:3000/user/${user.email}`)
+        axiosPublic.get(`/user/${user.email}`)
             .then(data => {
                 setUserInfo(data.data)
             })
@@ -21,7 +21,7 @@ const Dashboard = () => {
     // const {data:userInfo, isLoading} = useQuery({
     //     queryKey: "userInfo",
     //     queryFn: async()=>{
-    //         const result = await axiosPublic.get(`http://localhost:3000/user/${user.email}`);
+    //         const result = await axiosPublic.get(`https://news-wave-server.vercel.app/user/${user.email}`);
     //         return result?.data;
     //     }
     // })
