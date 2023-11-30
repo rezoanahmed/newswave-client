@@ -1,9 +1,11 @@
 import {  Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { VisibilitySharp } from "@mui/icons-material";
 
 
 const ArticleCard = ({ articles }) => {
-    const { title, article, photoURL, _id } = articles;
+    const { title, article, photoURL, _id, views } = articles;
     return (
         // <div className="p-4 rounded-md bg-base-200 shadow-2xl">
         //     <img src={image} alt="" className="h-64 rounded-md" />
@@ -26,8 +28,12 @@ const ArticleCard = ({ articles }) => {
       />
       <CardContent>
         <Typography sx={{fontFamily:"Quattrocento"}} gutterBottom variant="h5" component="div">
-          {title}
+           <div className="flex justify-end gap-1">
+           {title}
+          <VisibilitySharp></VisibilitySharp> {views}
+          </div>
         </Typography>
+          
         <Typography sx={{fontFamily:"Quattrocento Sans"}} variant="body2" color="text.secondary">
           {article?.slice(0,100)}...
         <NavLink to={`/article/${_id}`} className='text-blue font-bold'>Read More</NavLink>

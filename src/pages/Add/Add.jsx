@@ -44,7 +44,7 @@ const Add = () => {
         // console.log(res);
         const photoURL = res.data.data.display_url;
         // console.log(photoURL);
-        const articleDetails = {title, category, article, photoURL, type, author_name, author_email, author_img, status}
+        const articleDetails = {title, category, article, photoURL, type, author_name, author_email, author_img, status, views: (Math.floor(Math.random()*9000)+1000)}
         console.log(articleDetails);
         axiosPublic.post("/posts", articleDetails)
         .then(data=>{
