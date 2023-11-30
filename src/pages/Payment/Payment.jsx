@@ -13,8 +13,8 @@ const Payment = () => {
             <Helmet>
                 <title>Subscribe</title>
             </Helmet>
-            <div>
-                <h1 className="text-4xl font-bold">Payment</h1>
+            <div className="">
+                <h1 className="text-4xl font-bold text-center">Pay For Premium Subscriptions</h1>
             </div>
             <div>
                 <Elements stripe={stripePromise}>

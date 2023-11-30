@@ -82,11 +82,11 @@ const Subscriptions = () => {
                                         </svg>
                                     </span>Live Chat, Email Support
                                 </p>
-                                <button className="flex items-center mt-auto text-white bg-gunblack border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500  rounded">Buy Subscription
+                                <Link to='/payment' className="flex items-center mt-auto text-white bg-gunblack border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500  rounded">Buy Subscription
                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
-                                </button>
+                                </Link>
                                 
                             </div>
                         </div>
@@ -132,11 +132,11 @@ const Subscriptions = () => {
                                         </svg>
                                     </span>Ticket System for issue resolution
                                 </p>
-                                <button className="flex items-center mt-auto text-white bg-gunblack border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Buy Subscription
+                                <Link to='/payment' className="flex items-center mt-auto text-white bg-gunblack border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500  rounded">Buy Subscription
                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
-                                </button>
+                                </Link>
                                 
                             </div>
                         </div>
@@ -182,11 +182,11 @@ const Subscriptions = () => {
                                         </svg>
                                     </span>Social Media Support
                                 </p>
-                                <button className="flex items-center mt-auto text-white bg-gunblack border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Buy Subscription
+                                <Link to='/payment' className="flex items-center mt-auto text-white bg-gunblack border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500  rounded">Buy Subscription
                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
-                                </button>
+                                </Link>
                                 
                             </div>
                         </div>

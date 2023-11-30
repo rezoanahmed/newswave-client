@@ -3,7 +3,7 @@ import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
