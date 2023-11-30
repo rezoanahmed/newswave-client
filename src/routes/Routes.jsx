@@ -19,6 +19,7 @@ import ManageAllUsers from "../dashboard/ManageAllUsers/ManageAllUsers";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import AuthorRequest from "../pages/AuthorRequest/AuthorRequest";
 import AuthorApproval from "../dashboard/AuthorApproval/AuthorApproval";
+import Payment from "../pages/Payment/Payment";
 
 export const routes = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/authorrequest",
                 element:<AuthorRequest></AuthorRequest>
+            },
+            {
+                path: "/payment",
+                element: <Payment></Payment>
             }
             
         ]
