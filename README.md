@@ -1,8 +1,36 @@
-# React + Vite
+# News Wave
+## A Fullstack Website
+### Technologies Used:
+#### Front End 
+* React JS
+* React Routers
+* Tailwind CSS
+* Material UI (in register, login, articles card and add pages)
+* Daisy UI (in homepage)
+* React Icons
+* Lottie React (For Animation)
+* Firebase (for authentication)
+* React Icons
+* Axios
+* Tanstack Query
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Backend
+* MongoDB
+* Express JS
+* CORS
 
-Currently, two official plugins are available:
+### Features of the website
+* Awesome sliders
+* User Friendly UI
+* Awesome sweet alerts
+* Admin Panel
+* Fully device responsive
+* Free Users and Premium Users Section
+* Stripe payment method system
+* Eye catching UI
+* Sticky Navbar
+* Password Authentication
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Admin Panel Login Details
+* E-mail: admin@newswave.net
+* Password: Rezoan@01
