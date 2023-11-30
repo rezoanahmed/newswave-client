@@ -25,9 +25,14 @@ const Hero = () => {
     useEffect(() => {
         axiosPublic.get("/posts")
             .then(data => {
-                setArticle(data.data);
+
+                // posts has been sorted based on their views and showed 6 posts in the slider as per the instructions
+                const sortedArticles = data.data.sort((a, b) => b.views - a.views);
+                // console.log(sortedArticles);
+                setArticle(sortedArticles.slice(0, 6));
             })
     }, [])
+
     return (
         <div className="">
             <div className="px-8 text-center py-4">
@@ -53,7 +58,7 @@ const Hero = () => {
             </div>
 
             <div className="font-medium text-center text-2xl">
-                <CountUp end={500000} duration={6} />+ Users All Over The World 
+                <CountUp end={500000} duration={6} />+ Users All Over The World
 
 
             </div>
@@ -80,7 +85,7 @@ const Hero = () => {
                     {
                         article?.map(element => <SwiperSlide key={element._id}>
                             <div className="">
-                                <h1 className="absolute mt-64 ml-96 max-w-xl text-white text-center font-bold text-4xl h-auto p-4 bg-black bg-opacity-60">{element?.title}</h1>
+                                <h1 className="absolute mt-64 ml-96 max-w-xl text-white text-center font-bold text-4xl h-auto p-4 bg-black bg-opacity-60">{element?.title} <span className="bg-red-600 font-bold p-2 rounded-md text-sm">Trending</span></h1>
                                 <img src={element.photoURL} alt="" className="w-full" />
                             </div>
                         </SwiperSlide>).slice(0, 6)
