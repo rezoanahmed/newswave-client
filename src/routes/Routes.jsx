@@ -20,6 +20,7 @@ import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import AuthorRequest from "../pages/AuthorRequest/AuthorRequest";
 import AuthorApproval from "../dashboard/AuthorApproval/AuthorApproval";
 import Payment from "../pages/Payment/Payment";
+import Premium from "../pages/Premium/Premium";
 
 export const routes = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/payment",
                 element: <Payment></Payment>
+            },
+            {
+                path: "/premium",
+                element: <Premium></Premium>
             }
             
         ]
