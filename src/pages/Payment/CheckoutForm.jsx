@@ -1,9 +1,22 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useState } from "react";
+import useAxiosPublic from "../../hooks/useAxios";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
+    const [error,setError] = useState();
     const stripe = useStripe();
     const elements = useElements();
+    const {user} = useAuth();
+
+    const axiosPublic = useAxiosPublic();
+
+    const navigate = useNavigate();
+     
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -21,10 +34,21 @@ const CheckoutForm = () => {
             card
         })
         if(error){
-            console.log(error);
+            // console.log(error);
+            setError(error.message);
         }
         if(paymentMethod){
-            console.log(paymentMethod)
+            // console.log(paymentMethod);
+            axiosPublic.patch(`/premiumuser/${user.email}`, {account_type:"premium"})
+            setError("");
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "Congratulations! Now you're our premium user.",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              navigate("/")
         }
 
     }
@@ -50,6 +74,7 @@ const CheckoutForm = () => {
 
                 </CardElement>
                 <button type="submit" className="btn w-1/4 mt-5 mx-auto btn-sm  btn-success" disabled={!stripe}>Pay</button>
+                <p className="mt-2 text-red-600 text-center text-sm">{error}</p>
             </form>
         </div>
     );

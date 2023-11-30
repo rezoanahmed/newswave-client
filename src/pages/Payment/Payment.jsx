@@ -3,8 +3,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Helmet } from "react-helmet-async";
 import CheckoutForm from "./CheckoutForm";
 
+
 const stripePromise = loadStripe(import.meta.env.VITE_payment);
 const Payment = () => {
+    
 
     return (
         <div>
