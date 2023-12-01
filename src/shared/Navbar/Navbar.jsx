@@ -19,34 +19,18 @@ const Navbar = () => {
             .then(data => {
                 setUserInfo(data.data)
             })
-    }, [axiosPublic,user?.email, userInfo])
+    }, [axiosPublic, user?.email, userInfo])
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/all'>All Articles</NavLink></li>
         <li><NavLink to='/subscriptions'>Subscription</NavLink></li>
-        {
-            userInfo?.role == "author" || userInfo?.role == "admin" 
-            ?
-            <>
-            <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
-            <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
-            </>
-            :
-            <li><NavLink to='/authorrequest' className={user ? "" : "hidden"}>Become An Author</NavLink></li>
+        <li><NavLink to='/add' className={user ? "" : "hidden"}>Add Articles</NavLink></li>
+        <li><NavLink to='/myarticles' className={user ? "" : "hidden"}>My Articles</NavLink></li>
+        <li><NavLink to='/authorrequest' className={user ? "" : "hidden"}>Become An Author</NavLink></li>
+        <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li>
+        <li><NavLink to='/premium' className={user ? "" : "hidden"}>Premium Articles</NavLink></li>
 
-        }
-        {
-            userInfo?.role == "admin" || userInfo?.role == "author" ?
-                <li><NavLink to='/dashboard' className={user ? "" : "hidden"}>Dashboard</NavLink></li> :
-                <></>
-        }
-        {
-            userInfo?.account_type == "premium" || userInfo?.role == "admin" ?
-                <li><NavLink to='/premium' className={user ? "" : "hidden"}>Premium Articles</NavLink></li>
-                :
-                <></>
-        }
     </>
 
     return (

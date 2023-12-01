@@ -44,8 +44,7 @@ const Dashboard = () => {
                     isPending ? "pending" : isActive ? "underline font-bold" : ""
                 }>Homepage</NavLink>
                 </div>
-                {
-                    userInfo?.role === "admin" ?
+                
                         <div className="p-8 flex flex-col gap-2">
                             
                             <NavLink to='/dashboard/manageusers' className={({ isActive, isPending }) =>
@@ -61,9 +60,7 @@ const Dashboard = () => {
                                 isPending ? "pending" : isActive ? "underline font-bold" : ""
                             }>Author Requests</NavLink>
                         </div>
-                        :
-                        <></>
-                }
+                 
                 <div className="divider"></div>
                 <div className="p-8 flex flex-col gap-2">
                     <NavLink to='/dashboard/manage' className={({ isActive, isPending }) =>
